@@ -1,16 +1,20 @@
-class Api::V1::PostController < ApplicationController
+class Api::V1::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
     if @post.save
-      render json: @post, status:200
+      render json: @post, status: 200
     else
       render json: {messages: @post.errors.full_messages}
     end
 
   end
 
-  def
+  def show
+    ## come back to do specific message on post that does not exist.
+    @post = Post.find(params[:id])
+    render json: @post, status: 200
+  end
 
   private
 

@@ -1,7 +1,7 @@
 class Api::V1::PostController < ApplicationController
 
   def create
-    @post = Post.new(user_params)
+    @post = Post.new(post_params)
     if @post.save
       render json: @post, status:200
     else
@@ -10,11 +10,11 @@ class Api::V1::PostController < ApplicationController
 
   end
 
-  def 
+  def
 
   private
 
-  def user_params
+  def post_params
     params.require(:post).permit(:user_id, :category_id, :location_id, :title, :description)
   end
 
